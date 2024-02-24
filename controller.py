@@ -22,6 +22,7 @@ class Controller(QtCore.QObject):
         self.worker.progress.connect(self.progress)
         self.worker.started.connect(self.started)
         self.worker.finished.connect(self.finished)
+        self.resetLoop.connect(self.worker.handle_reset)
 
 
     @QtCore.Slot()
@@ -38,3 +39,6 @@ class Controller(QtCore.QObject):
         self.worker.wait()
         self.worker.quit()
 
+    @QtCore.Slot()
+    def resetThreadloop(self):
+        self.resetLoop.emit()

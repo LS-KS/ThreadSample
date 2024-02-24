@@ -43,7 +43,16 @@ Window {
                 id: btnInt
                 text: "Interrupt"
                 enabled: false
-                onClicked: controller.stop()
+                onClicked: {
+                    btnReset.enabled = false
+                    controller.stop()
+                }
+            }
+            Button{
+                id: btnReset
+                text: "Reset Threadloop"
+                enabled: false
+                onClicked: controller.resetThreadloop()
             }
 
             Label{
@@ -91,10 +100,12 @@ Window {
         function onStarted(){
             btnRun.enabled = false
             btnInt.enabled = true
+            btnReset.enabled = true
         }
         function onFinished(){
             btnRun.enabled = true
             btnInt.enabled = false
+            btnReset.enabled = false
             resultArea.text ="Thread beendet.\n"  + resultArea.text
         }
     }
