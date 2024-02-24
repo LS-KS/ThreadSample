@@ -1,0 +1,8 @@
+{
+    "files": [
+        "controller.py",
+        "main.py",
+        "main.qml",
+        "samplethread.py"
+    ]
+}
